@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Infinity Chat - Secure Real-Time Messaging</title>
+  <title>Chattrix — Secure Real-Time Messaging</title>
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +21,8 @@
   <!-- 1. AUTHENTICATION VIEW -->
   <div id="auth-view">
     <div class="auth-header">
-      <h1>Infinity Chat</h1>
-      <p id="auth-subtitle">Enter credentials to join the secure lounge</p>
+      <h1>Chattrix</h1>
+      <p id="auth-subtitle">Sign in to your Chattrix account</p>
     </div>
     <div class="auth-tabs">
       <button id="tab-login" class="auth-tab active" onclick="switchTab('login')">Sign In</button>
@@ -50,18 +50,37 @@
       <div class="avatar-selection" id="avatar-selection-wrapper" style="display: none;">
         <label>Select Avatar</label>
         <div class="avatar-grid">
-          <!-- FIX 2: Restored all broken data-seed attributes (were incorrectly written as dataseed) -->
           <div class="avatar-option selected" onclick="selectAvatar(0)" data-seed="Leo">
-            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Leo" alt="Avatar Leo">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Leo" alt="Leo">
+            <span class="avatar-name">Leo</span>
           </div>
           <div class="avatar-option" onclick="selectAvatar(1)" data-seed="Luna">
-            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Luna" alt="Avatar Luna">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Luna" alt="Luna">
+            <span class="avatar-name">Luna</span>
           </div>
           <div class="avatar-option" onclick="selectAvatar(2)" data-seed="Milo">
-            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Milo" alt="Avatar Milo">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Milo" alt="Milo">
+            <span class="avatar-name">Milo</span>
           </div>
           <div class="avatar-option" onclick="selectAvatar(3)" data-seed="Oliver">
-            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Oliver" alt="Avatar Oliver">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Oliver" alt="Oliver">
+            <span class="avatar-name">Oliver</span>
+          </div>
+          <div class="avatar-option" onclick="selectAvatar(4)" data-seed="Nova">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Nova" alt="Nova">
+            <span class="avatar-name">Nova</span>
+          </div>
+          <div class="avatar-option" onclick="selectAvatar(5)" data-seed="Zara">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Zara" alt="Zara">
+            <span class="avatar-name">Zara</span>
+          </div>
+          <div class="avatar-option" onclick="selectAvatar(6)" data-seed="Pixel">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Pixel" alt="Pixel">
+            <span class="avatar-name">Pixel</span>
+          </div>
+          <div class="avatar-option" onclick="selectAvatar(7)" data-seed="Orion">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=Orion" alt="Orion">
+            <span class="avatar-name">Orion</span>
           </div>
         </div>
       </div>
@@ -78,7 +97,7 @@
         <div class="sidebar-header">
           <div class="brand">
             <span class="brand-icon">💬</span>
-            <span class="brand-name">Infinity Chat</span>
+            <span class="brand-name">Chattrix</span>
           </div>
           <div class="status-dot-wrapper">
             <span id="ws-status-dot" class="pulse-dot"></span>
@@ -304,11 +323,11 @@
 
       if (mode === 'login') {
         avatarWrapper.style.display = 'none';
-        authSubtitle.textContent = 'Enter credentials to join the secure lounge';
+        authSubtitle.textContent = 'Sign in to your Chattrix account';
         authSubmitBtn.textContent = 'Sign In';
       } else {
         avatarWrapper.style.display = 'flex';
-        authSubtitle.textContent = 'Create a new account with custom avatar presets';
+        authSubtitle.textContent = 'Create your Chattrix identity';
         authSubmitBtn.textContent = 'Create Account';
       }
     }
@@ -481,7 +500,7 @@
         el.onclick = () => switchRoom(groupRoomId);
 
         const avatarHtml = group.avatar
-          ? `<img src="${group.avatar}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">`
+          ? `<img src="${group.avatar}" class="online-user-avatar" alt="${group.name}" style="width:36px;height:36px;border-radius:50%;object-fit:cover;flex-shrink:0;">`
           : `<span class="room-icon-badge">👥</span>`;
 
         el.innerHTML = `
